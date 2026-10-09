@@ -131,7 +131,7 @@ export function tickDuration(bpm, perBeat = 1) {
 
 /**
  * Agenda os pulsos que caem antes de now + lookahead.
- * state: { nextTime, tickIndex, bar } — nextTime em segundos do relógio de áudio.
+ * state: { nextTime, tickIndex, bar }, com nextTime em segundos do relógio de áudio.
  * getBpm(bar): BPM do compasso (permite o treino progressivo).
  */
 export function scheduleTicks(state, now, pattern, getBpm, lookahead = LOOKAHEAD_S) {

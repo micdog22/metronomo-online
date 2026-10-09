@@ -1,4 +1,4 @@
-# Metrônomo Online — metrônomo preciso com acentos e subdivisões (HTML + JS)
+# Metrônomo Online: metrônomo preciso com acentos e subdivisões (HTML + JS)
 
 Um metrônomo de verdade no navegador para estudar música: andamento de 30 a 300 BPM, compassos simples e compostos, acento no primeiro tempo, subdivisões, três sons sintetizados e um treino progressivo que acelera sozinho. Sem instalar nada, sem cadastro e sem arquivos de áudio.
 
@@ -6,7 +6,7 @@ Um metrônomo de verdade no navegador para estudar música: andamento de 30 a 30
 
 ## Recursos
 
-- BPM de 30 a 300: controle deslizante, campo numérico e botões − e +.
+- BPM de 30 a 300: controle deslizante, campo numérico e botões - e +.
 - Tap tempo: toque no ritmo da música (botão ou tecla T). O andamento é a média dos toques recentes, e a contagem recomeça depois de 2 segundos parado.
 - Compassos 2/4, 3/4, 4/4, 5/4, 6/8, 7/8 e 12/8, com acento opcional no 1º tempo.
 - Subdivisões em colcheias, tercinas e semicolcheias (as opções se ajustam ao compasso).
@@ -18,7 +18,7 @@ Um metrônomo de verdade no navegador para estudar música: andamento de 30 a 30
 
 ## Como usar
 
-1. Escolha o andamento (arraste, digite ou use − e +) ou toque no **Tap tempo** no ritmo da música.
+1. Escolha o andamento (arraste, digite ou use - e +) ou toque no **Tap tempo** no ritmo da música.
 2. Escolha o compasso, a subdivisão e o som.
 3. Clique em **Iniciar** (ou aperte Espaço).
 
@@ -90,4 +90,4 @@ Issues e pull requests são bem-vindos.
 
 ## Licença
 
-MIT — veja [LICENSE](LICENSE).
+MIT. Veja [LICENSE](LICENSE).
