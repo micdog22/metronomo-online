@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metrônomo Online — metrônomo preciso com acentos e subdivisões</title>
+  <meta name="description" content="Metrônomo online gratuito e preciso: 30 a 300 BPM, tap tempo, compassos simples e compostos, acentos, subdivisões, três sons e treino progressivo. Funciona no navegador, sem instalar nada.">
+  <meta name="theme-color" content="#c2410c">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥁</text></svg>">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./src/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Metrônomo Online</h1>
+    <p class="lead">Metrônomo preciso com acentos, subdivisões, tap tempo e treino progressivo.</p>
+  </header>
+
+  <main>
+    <section class="card player" aria-labelledby="tempo-title">
+      <h2 id="tempo-title" class="sr-only">Andamento</h2>
+      <div class="tempo">
+        <button type="button" class="btn secondary round" id="bpm-down" aria-label="Diminuir 1 BPM">−</button>
+        <div class="bpm-box">
+          <label for="bpm" class="sr-only">BPM</label>
+          <input id="bpm" class="bpm-input" type="number" min="30" max="300" step="1" inputmode="numeric" value="100">
+          <span class="bpm-unit" id="bpm-unit">BPM</span>
+        </div>
+        <button type="button" class="btn secondary round" id="bpm-up" aria-label="Aumentar 1 BPM">+</button>
+      </div>
+      <p class="marking" id="marking" aria-live="polite"></p>
+      <label for="bpm-range" class="sr-only">Andamento (controle deslizante)</label>
+      <input id="bpm-range" class="bpm-range" type="range" min="30" max="300" step="1" value="100">
+      <div class="beats" id="beats" aria-hidden="true"></div>
+      <p class="bar-info muted" id="bar-info">Parado</p>
+      <div class="transport">
+        <button type="button" class="btn big" id="toggle" aria-pressed="false">Iniciar</button>
+        <button type="button" class="btn secondary big" id="tap" aria-describedby="tap-hint">Tap tempo</button>
+      </div>
+      <p class="hint" id="tap-hint">Toque no ritmo da música (ou aperte T) pelo menos duas vezes. Depois de 2 segundos parado, a contagem recomeça.</p>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card" aria-labelledby="settings-title">
+      <h2 id="settings-title">Compasso e som</h2>
+      <div class="grid">
+        <div>
+          <label for="signature">Compasso</label>
+          <select id="signature">
+            <option value="2/4">2/4</option>
+            <option value="3/4">3/4</option>
+            <option value="4/4">4/4</option>
+            <option value="5/4">5/4</option>
+            <option value="6/8">6/8 (composto)</option>
+            <option value="7/8">7/8 (2+2+3)</option>
+            <option value="12/8">12/8 (composto)</option>
+          </select>
+        </div>
+        <div>
+          <label for="subdivision">Subdivisão</label>
+          <select id="subdivision"></select>
+        </div>
+        <div>
+          <label for="volume">Volume: <span id="volume-value">80%</span></label>
+          <input id="volume" type="range" min="0" max="100" step="1" value="80">
+        </div>
+      </div>
+      <p class="hint" id="unit-hint"></p>
+      <fieldset class="sounds">
+        <legend>Som</legend>
+        <div class="segmented">
+          <input type="radio" name="sound" id="sound-click" value="click"><label for="sound-click">Clique</label>
+          <input type="radio" name="sound" id="sound-beep" value="beep"><label for="sound-beep">Bip</label>
+          <input type="radio" name="sound" id="sound-wood" value="wood"><label for="sound-wood">Madeira</label>
+        </div>
+      </fieldset>
+      <label class="check"><input type="checkbox" id="accent"> Acentuar o 1º tempo do compasso</label>
+    </section>
+
+    <section class="card" aria-labelledby="trainer-title">
+      <h2 id="trainer-title">Treino progressivo</h2>
+      <p class="muted intro">Aumenta o andamento sozinho enquanto você toca: comece devagar e deixe o metrônomo subir até o tempo final.</p>
+      <label class="check"><input type="checkbox" id="trainer-enabled"> Ativar treino progressivo</label>
+      <div class="grid trainer-grid">
+        <div>
+          <label for="trainer-step">Aumentar (BPM)</label>
+          <input id="trainer-step" type="number" min="1" max="50" step="1" inputmode="numeric">
+        </div>
+        <div>
+          <label for="trainer-bars">A cada (compassos)</label>
+          <input id="trainer-bars" type="number" min="1" max="64" step="1" inputmode="numeric">
+        </div>
+        <div>
+          <label for="trainer-limit">Até (BPM)</label>
+          <input id="trainer-limit" type="number" min="30" max="300" step="1" inputmode="numeric">
+        </div>
+      </div>
+      <p class="trainer-status" id="trainer-status" aria-live="polite"></p>
+    </section>
+
+    <section class="card" aria-labelledby="keys-title">
+      <h2 id="keys-title">Atalhos de teclado</h2>
+      <ul class="keys">
+        <li><kbd>Espaço</kbd> iniciar ou parar</li>
+        <li><kbd>↑</kbd> ou <kbd>→</kbd> mais 1 BPM</li>
+        <li><kbd>↓</kbd> ou <kbd>←</kbd> menos 1 BPM</li>
+        <li><kbd>Shift</kbd> + setas: 5 BPM por vez</li>
+        <li><kbd>T</kbd> tap tempo</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Tudo roda no seu navegador. Código aberto no <a href="https://github.com/micdog22/metronomo-online">GitHub</a> · Licença MIT</p>
+  </footer>
+</body>
+</html>

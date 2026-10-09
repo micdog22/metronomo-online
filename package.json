@@ -1,0 +1,11 @@
+{
+  "name": "metronomo-online",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Metrônomo online preciso com acentos, subdivisões, tap tempo e treino progressivo",
+  "type": "module",
+  "scripts": { "test": "node --test" },
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/micdog22/metronomo-online.git" },
+  "homepage": "https://micdog22.github.io/metronomo-online/"
+}
